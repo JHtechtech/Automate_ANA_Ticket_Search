@@ -55,6 +55,22 @@ The full example watchlist in `config/watchlist.example.json` includes these rec
 
 For safer testing, start with the one-route trial config at `config/watchlist.trial.json` before using the full route list.
 
+## Open-Source Project Metadata
+
+Suggested repository description:
+
+> Safe local prototype for EVA Air business-class award alerting via ANA Mileage Club-style partner award monitoring and Telegram dry-run alerts.
+
+Suggested topics are tracked in `.github/repository-metadata.yml`: `award-travel`, `ana-mileage-club`, `eva-air`, `telegram-bot`, `flight-alerts`, `travel-tools`, `python`, `sqlite`, and `open-source`.
+
+The project is licensed under the MIT License. Release notes for the first release are in `docs/releases/v0.1.0.md`, and roadmap issue drafts are in `docs/issues/`.
+
+Maintainers with GitHub CLI access can apply the metadata, create the release, and open the roadmap issues with:
+
+```bash
+scripts/bootstrap_github_project.sh
+```
+
 ## Repository Layout
 
 ```text
@@ -64,6 +80,11 @@ config/
 docs/
   ANA_TICKET_USAGE.md      # How to use the bot for ANA Mileage Club award tickets
   HAND_BY_HAND_GUIDE.md    # Beginner-friendly end-to-end usage walkthrough
+  ROADMAP.md               # Project roadmap summary
+  TELEGRAM_SETUP.md        # Telegram bot setup and smoke-test guide
+  TRIAL_RUN.md             # Step-by-step trial guide
+  issues/                  # Draft GitHub roadmap issues
+  releases/                # Release note drafts
   TELEGRAM_SETUP.md        # Telegram bot setup and smoke-test guide
   TRIAL_RUN.md             # Step-by-step trial guide
 src/eva_award_alert/
