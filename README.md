@@ -263,13 +263,13 @@ The repository now includes the first local prototype slice:
 - `src/eva_award_alert/notifier.py` formats Telegram messages and defaults to dry-run output.
 - `src/eva_award_alert/cli.py` exposes one-shot and continuous scheduled runner modes.
 
-Run one local stub workflow with:
+Run the full recommended-route stub workflow with:
 
 ```bash
 PYTHONPATH=src python -m eva_award_alert.cli --once --config config/watchlist.example.json --provider stub --database data/eva_award_alert.db
 ```
 
-Use `--watch` instead of `--once` to keep running on the configured polling interval. The live ANA Mileage Club/EVA partner-award provider is still intentionally pending a compliance-reviewed provider spike. Until then, the stub provider proves that config loading, scheduled-run orchestration, SQLite state, alert formatting, and duplicate suppression work locally.
+For a safer one-route trial before production, use `config/watchlist.trial.json` and follow `docs/TRIAL_RUN.md`. Use `--watch` instead of `--once` to keep running on the configured polling interval. The live ANA Mileage Club/EVA partner-award provider is still intentionally pending a compliance-reviewed provider spike. Until then, the stub provider proves that config loading, scheduled-run orchestration, SQLite state, alert formatting, and duplicate suppression work locally.
 
 ## Data Model Draft
 
@@ -338,8 +338,8 @@ This project should not automate purchases, bookings, logins, or bypass website 
 
 For now, review this README and refine the planning assumptions. The project is ready to start coding the local prototype once one initial route/date window and the first provider-spike hypothesis are confirmed. The next code changes should add:
 
-1. Run and review the stub workflow end to end.
+1. Run and review the one-route trial in `docs/TRIAL_RUN.md`.
 2. Confirm the first real route/date window to monitor.
 3. Research and document the compliance-reviewed live provider approach.
 4. Replace or extend the stub provider behind the existing provider interface.
-5. Add scheduler/deployment documentation after the one-shot runner is stable.
+5. Add scheduler/deployment documentation after the trial runner is stable.

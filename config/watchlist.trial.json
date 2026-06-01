@@ -1,0 +1,34 @@
+{
+  "settings": {
+    "poll_interval_minutes": 15,
+    "max_retries": 1,
+    "duplicate_suppression_hours": 24,
+    "database_path": "data/eva_award_alert_trial.db",
+    "notifier": {
+      "type": "telegram",
+      "dry_run": true,
+      "telegram_bot_token_env": "TELEGRAM_BOT_TOKEN",
+      "telegram_chat_id_env": "TELEGRAM_CHAT_ID"
+    }
+  },
+  "routes": [
+    {
+      "name": "Trial SFO to Taipei EVA business award",
+      "airline": "BR",
+      "airline_name": "EVA Air",
+      "origin": "SFO",
+      "destination": "TPE",
+      "trip_type": "one_way",
+      "search_type": "award",
+      "award_program": "ANA Mileage Club",
+      "cabin": "business",
+      "passengers": 1,
+      "date_window": {"start": "2026-10-01", "end": "2026-10-03"},
+      "alert": {
+        "notify_on": "new_award_availability",
+        "urgency": "high",
+        "note": "Trial route with dry-run alerts only. Replace dates before real monitoring."
+      }
+    }
+  ]
+}
