@@ -251,6 +251,26 @@ Airline: EVA Air (BR)
 Action: Review and book manually as soon as possible
 ```
 
+## Current Prototype Implementation
+
+The repository now includes the first local prototype slice:
+
+- `config/watchlist.example.json` contains the recommended initial EVA North America-to-Taipei award routes.
+- `src/eva_award_alert/config.py` loads and validates the watchlist.
+- `src/eva_award_alert/providers.py` defines the award-search provider interface plus a deterministic stub provider.
+- `src/eva_award_alert/runner.py` runs one award-check cycle across configured routes.
+- `src/eva_award_alert/state.py` persists search runs, normalized availability results, and alerts in SQLite.
+- `src/eva_award_alert/notifier.py` formats Telegram messages and defaults to dry-run output.
+- `src/eva_award_alert/cli.py` exposes one-shot and continuous scheduled runner modes.
+
+Run one local stub workflow with:
+
+```bash
+PYTHONPATH=src python -m eva_award_alert.cli --once --config config/watchlist.example.json --provider stub --database data/eva_award_alert.db
+```
+
+Use `--watch` instead of `--once` to keep running on the configured polling interval. The live ANA Mileage Club/EVA partner-award provider is still intentionally pending a compliance-reviewed provider spike. Until then, the stub provider proves that config loading, scheduled-run orchestration, SQLite state, alert formatting, and duplicate suppression work locally.
+
 ## Data Model Draft
 
 The MVP can begin with a few SQLite tables:
@@ -318,9 +338,8 @@ This project should not automate purchases, bookings, logins, or bypass website 
 
 For now, review this README and refine the planning assumptions. The project is ready to start coding the local prototype once one initial route/date window and the first provider-spike hypothesis are confirmed. The next code changes should add:
 
-1. A sample EVA award watchlist config.
-2. A Python project skeleton and CLI entry point.
-3. A stub award search provider with deterministic fake availability.
-4. SQLite state tracking for search runs, availability results, and alerts.
-5. A Telegram notifier module with dry-run/test-mode support.
-6. Tests for new-seat detection and duplicate suppression.
+1. Run and review the stub workflow end to end.
+2. Confirm the first real route/date window to monitor.
+3. Research and document the compliance-reviewed live provider approach.
+4. Replace or extend the stub provider behind the existing provider interface.
+5. Add scheduler/deployment documentation after the one-shot runner is stable.
