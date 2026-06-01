@@ -85,6 +85,59 @@ The first version should intentionally avoid:
 - Complex dashboards before the basic alerting workflow is proven.
 - Storing payment details, passport information, loyalty-program passwords, or other sensitive travel documents.
 
+## When to Start Coding
+
+Planning should not continue indefinitely. This project is ready to move from planning into implementation when the team can answer enough questions to build a safe local prototype, even if the live award-search provider is not finalized yet.
+
+### Start Coding When These Are True
+
+1. **Target use case is fixed**
+   - The bot monitors EVA Air business class award seats from North America to Taipei.
+   - The first passenger count is `1`.
+   - Cash fares, automated booking, and payment are excluded.
+
+2. **Initial watchlist is concrete**
+   - At least one origin airport, destination, date window, cabin, passenger count, and award program/source are written down in config form.
+   - The first route can be a single high-priority route such as `SFO -> TPE`; the project does not need every route configured before coding begins.
+
+3. **The first data-source experiment is selected**
+   - A provider spike has a clear hypothesis, such as evaluating ANA Mileage Club partner-award search for EVA-operated award availability.
+   - The spike has explicit compliance boundaries: no purchase automation, no bypassing technical controls, and no secret storage in source control.
+
+4. **The alert workflow can be tested without live award data**
+   - A stub provider can emit fake EVA business award availability.
+   - The runner can compare stub results against local history.
+   - Telegram messages can be tested in dry-run mode before sending real alerts.
+
+5. **The first implementation slice is small enough to finish**
+   - The first code milestone should load config, run a stub search, persist state, and print or dry-run an alert.
+   - Live provider integration should come after that workflow is proven locally.
+
+### Do Not Wait For These Before Coding
+
+The project does **not** need all of the following before coding starts:
+
+- A perfect final provider decision.
+- A dashboard design.
+- Multi-user support.
+- Every North American route and date window.
+- Production deployment automation.
+
+Those can be decided after the local prototype proves that the watchlist, state, deduplication, and alert flow are shaped correctly.
+
+### First Coding Slice
+
+The first real code change should be intentionally boring and testable:
+
+1. Add a sample watchlist config for one EVA North America-to-Taipei award route.
+2. Add a Python package and CLI entry point.
+3. Add a stub award-search provider that returns deterministic fake availability.
+4. Add SQLite state tables for search runs, availability results, and alerts.
+5. Add a Telegram notifier interface with `dry_run` output first.
+6. Add tests proving that a newly seen award seat creates one alert and the same unchanged seat does not create duplicate alerts.
+
+A good rule of thumb: **start coding the local prototype now; postpone live search automation until the stubbed workflow and compliance boundaries are clear.**
+
 ## Key Design Principles
 
 - **Award-only:** The bot is optimized for award-seat detection, not fare shopping.
@@ -216,6 +269,7 @@ The MVP can begin with a few SQLite tables:
 - Define the EVA award-ticket product goal, scope, and non-goals.
 - Document an MVP architecture.
 - Decide the first implementation stack.
+- Capture the criteria for when planning is complete enough to begin coding.
 
 ### Milestone 2: Local Prototype
 
@@ -262,9 +316,11 @@ This project should not automate purchases, bookings, logins, or bypass website 
 
 ## Getting Started for Contributors
 
-For now, review this README and refine the planning assumptions. Once the MVP scope is confirmed, the next code changes should add:
+For now, review this README and refine the planning assumptions. The project is ready to start coding the local prototype once one initial route/date window and the first provider-spike hypothesis are confirmed. The next code changes should add:
 
 1. A sample EVA award watchlist config.
-2. A Python project skeleton.
-3. A stub award search provider.
-4. A Telegram notifier module with test-mode support.
+2. A Python project skeleton and CLI entry point.
+3. A stub award search provider with deterministic fake availability.
+4. SQLite state tracking for search runs, availability results, and alerts.
+5. A Telegram notifier module with dry-run/test-mode support.
+6. Tests for new-seat detection and duplicate suppression.
