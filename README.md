@@ -125,6 +125,7 @@ routes_checked=1, results_seen=1, new_results=0, alerts_sent=0
 
 That second run proves duplicate suppression is working.
 
+For detailed test-trial instructions, including SQLite inspection, watch-mode smoke testing, and optional real Telegram test messages, see `docs/TRIAL_RUN.md`. For BotFather, chat ID, token, and Telegram smoke-test setup, see `docs/TELEGRAM_SETUP.md`. For a step-by-step ANA Mileage Club award-ticket usage guide, see `docs/ANA_TICKET_USAGE.md`.
 For detailed test-trial instructions, including SQLite inspection, watch-mode smoke testing, and optional real Telegram test messages, see `docs/TRIAL_RUN.md`. For BotFather, chat ID, token, and Telegram smoke-test setup, see `docs/TELEGRAM_SETUP.md`.
 For detailed test-trial instructions, including SQLite inspection, watch-mode smoke testing, and optional real Telegram test messages, see `docs/TRIAL_RUN.md`.
 
@@ -211,6 +212,7 @@ SQLite tables are created automatically when the runner starts:
 
 ## Trial-to-Production Path
 
+For ANA Mileage Club award-ticket usage specifically, follow `docs/ANA_TICKET_USAGE.md`. At a high level, use this order:
 Use this order:
 
 1. Run `pytest -q` and `python -m compileall -q src`.
