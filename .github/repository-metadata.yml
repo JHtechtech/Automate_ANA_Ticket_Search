@@ -1,0 +1,14 @@
+# Repository metadata proposal for maintainers.
+# Apply with GitHub UI or GitHub CLI when repository admin access is available.
+description: "Safe local prototype for EVA Air business-class award alerting via ANA Mileage Club-style partner award monitoring and Telegram dry-run alerts."
+homepage: ""
+topics:
+  - award-travel
+  - ana-mileage-club
+  - eva-air
+  - telegram-bot
+  - flight-alerts
+  - travel-tools
+  - python
+  - sqlite
+  - open-source
