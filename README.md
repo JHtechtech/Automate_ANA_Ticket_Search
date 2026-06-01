@@ -62,6 +62,8 @@ config/
   watchlist.example.json   # Full recommended route watchlist
   watchlist.trial.json     # One-route dry-run trial watchlist
 docs/
+  ANA_TICKET_USAGE.md      # How to use the bot for ANA Mileage Club award tickets
+  HAND_BY_HAND_GUIDE.md    # Beginner-friendly end-to-end usage walkthrough
   TELEGRAM_SETUP.md        # Telegram bot setup and smoke-test guide
   TRIAL_RUN.md             # Step-by-step trial guide
 src/eva_award_alert/
@@ -125,6 +127,7 @@ routes_checked=1, results_seen=1, new_results=0, alerts_sent=0
 
 That second run proves duplicate suppression is working.
 
+For a beginner-friendly end-to-end walkthrough, start with `docs/HAND_BY_HAND_GUIDE.md`. For detailed test-trial instructions, including SQLite inspection, watch-mode smoke testing, and optional real Telegram test messages, see `docs/TRIAL_RUN.md`. For BotFather, chat ID, token, and Telegram smoke-test setup, see `docs/TELEGRAM_SETUP.md`. For a step-by-step ANA Mileage Club award-ticket usage guide, see `docs/ANA_TICKET_USAGE.md`.
 For detailed test-trial instructions, including SQLite inspection, watch-mode smoke testing, and optional real Telegram test messages, see `docs/TRIAL_RUN.md`. For BotFather, chat ID, token, and Telegram smoke-test setup, see `docs/TELEGRAM_SETUP.md`. For a step-by-step ANA Mileage Club award-ticket usage guide, see `docs/ANA_TICKET_USAGE.md`.
 For detailed test-trial instructions, including SQLite inspection, watch-mode smoke testing, and optional real Telegram test messages, see `docs/TRIAL_RUN.md`. For BotFather, chat ID, token, and Telegram smoke-test setup, see `docs/TELEGRAM_SETUP.md`.
 For detailed test-trial instructions, including SQLite inspection, watch-mode smoke testing, and optional real Telegram test messages, see `docs/TRIAL_RUN.md`.
@@ -212,6 +215,7 @@ SQLite tables are created automatically when the runner starts:
 
 ## Trial-to-Production Path
 
+For a hand-by-hand usage walkthrough, start with `docs/HAND_BY_HAND_GUIDE.md`. For ANA Mileage Club award-ticket usage specifically, follow `docs/ANA_TICKET_USAGE.md`. At a high level, use this order:
 For ANA Mileage Club award-ticket usage specifically, follow `docs/ANA_TICKET_USAGE.md`. At a high level, use this order:
 Use this order:
 
