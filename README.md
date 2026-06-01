@@ -62,6 +62,7 @@ config/
   watchlist.example.json   # Full recommended route watchlist
   watchlist.trial.json     # One-route dry-run trial watchlist
 docs/
+  TELEGRAM_SETUP.md        # Telegram bot setup and smoke-test guide
   TRIAL_RUN.md             # Step-by-step trial guide
 src/eva_award_alert/
   cli.py                   # CLI entry point
@@ -124,6 +125,7 @@ routes_checked=1, results_seen=1, new_results=0, alerts_sent=0
 
 That second run proves duplicate suppression is working.
 
+For detailed test-trial instructions, including SQLite inspection, watch-mode smoke testing, and optional real Telegram test messages, see `docs/TRIAL_RUN.md`. For BotFather, chat ID, token, and Telegram smoke-test setup, see `docs/TELEGRAM_SETUP.md`.
 For detailed test-trial instructions, including SQLite inspection, watch-mode smoke testing, and optional real Telegram test messages, see `docs/TRIAL_RUN.md`.
 
 ## CLI Usage
@@ -185,6 +187,7 @@ Secrets are referenced by environment-variable name, not stored directly in conf
 }
 ```
 
+Keep `dry_run` set to `true` until trial output is verified. When you are ready to send a real Telegram test alert, follow `docs/TELEGRAM_SETUP.md` and use environment variables for `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID`.
 Keep `dry_run` set to `true` until trial output is verified.
 
 ## Data Model
@@ -213,6 +216,13 @@ Use this order:
 1. Run `pytest -q` and `python -m compileall -q src`.
 2. Run the one-route dry-run trial in `docs/TRIAL_RUN.md`.
 3. Confirm duplicate suppression by running the same trial twice.
+4. Configure Telegram using `docs/TELEGRAM_SETUP.md`.
+5. Optionally send one real Telegram message with the stub provider.
+6. Confirm the first real route/date window.
+7. Research and document the live provider approach.
+8. Implement the live provider behind the existing `AwardSearchProvider` interface.
+9. Add conservative rate limits, retries, timeouts, and observability.
+10. Only then consider production scheduling/deployment.
 4. Optionally send one real Telegram message with the stub provider.
 5. Confirm the first real route/date window.
 6. Research and document the live provider approach.
