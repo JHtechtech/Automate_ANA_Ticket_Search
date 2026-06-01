@@ -128,6 +128,9 @@ routes_checked=1, results_seen=1, new_results=0, alerts_sent=0
 That second run proves duplicate suppression is working.
 
 For a beginner-friendly end-to-end walkthrough, start with `docs/HAND_BY_HAND_GUIDE.md`. For detailed test-trial instructions, including SQLite inspection, watch-mode smoke testing, and optional real Telegram test messages, see `docs/TRIAL_RUN.md`. For BotFather, chat ID, token, and Telegram smoke-test setup, see `docs/TELEGRAM_SETUP.md`. For a step-by-step ANA Mileage Club award-ticket usage guide, see `docs/ANA_TICKET_USAGE.md`.
+For detailed test-trial instructions, including SQLite inspection, watch-mode smoke testing, and optional real Telegram test messages, see `docs/TRIAL_RUN.md`. For BotFather, chat ID, token, and Telegram smoke-test setup, see `docs/TELEGRAM_SETUP.md`. For a step-by-step ANA Mileage Club award-ticket usage guide, see `docs/ANA_TICKET_USAGE.md`.
+For detailed test-trial instructions, including SQLite inspection, watch-mode smoke testing, and optional real Telegram test messages, see `docs/TRIAL_RUN.md`. For BotFather, chat ID, token, and Telegram smoke-test setup, see `docs/TELEGRAM_SETUP.md`.
+For detailed test-trial instructions, including SQLite inspection, watch-mode smoke testing, and optional real Telegram test messages, see `docs/TRIAL_RUN.md`.
 
 ## CLI Usage
 
@@ -189,6 +192,7 @@ Secrets are referenced by environment-variable name, not stored directly in conf
 ```
 
 Keep `dry_run` set to `true` until trial output is verified. When you are ready to send a real Telegram test alert, follow `docs/TELEGRAM_SETUP.md` and use environment variables for `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID`.
+Keep `dry_run` set to `true` until trial output is verified.
 
 ## Data Model
 
@@ -212,6 +216,8 @@ SQLite tables are created automatically when the runner starts:
 ## Trial-to-Production Path
 
 For a hand-by-hand usage walkthrough, start with `docs/HAND_BY_HAND_GUIDE.md`. For ANA Mileage Club award-ticket usage specifically, follow `docs/ANA_TICKET_USAGE.md`. At a high level, use this order:
+For ANA Mileage Club award-ticket usage specifically, follow `docs/ANA_TICKET_USAGE.md`. At a high level, use this order:
+Use this order:
 
 1. Run `pytest -q` and `python -m compileall -q src`.
 2. Run the one-route dry-run trial in `docs/TRIAL_RUN.md`.
@@ -223,6 +229,12 @@ For a hand-by-hand usage walkthrough, start with `docs/HAND_BY_HAND_GUIDE.md`. F
 8. Implement the live provider behind the existing `AwardSearchProvider` interface.
 9. Add conservative rate limits, retries, timeouts, and observability.
 10. Only then consider production scheduling/deployment.
+4. Optionally send one real Telegram message with the stub provider.
+5. Confirm the first real route/date window.
+6. Research and document the live provider approach.
+7. Implement the live provider behind the existing `AwardSearchProvider` interface.
+8. Add conservative rate limits, retries, timeouts, and observability.
+9. Only then consider production scheduling/deployment.
 
 ## Compliance and Safety
 
